@@ -8,4 +8,7 @@ RUN chmod -R 755 /var/www/html
 RUN chmod 777 /var/www/html/user1.txt /var/www/html/user2.txt /var/www/html/comments.txt /var/www/html/management.txt
 ADD php.ini /etc/php5/apache2/php.ini
 ENV DEBIAN_FRONTEND noninteractive
-CMD /usr/sbin/apache2ctl -D FOREGROUND
+ENV PORT $PORT
+ADD run.sh /usr/local/bin/run.sh
+RUN chmod 755 /usr/local/bin/run.sh
+CMD /usr/local/bin/run.sh
